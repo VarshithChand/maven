@@ -1,0 +1,12 @@
+node('built-in'){
+    stage("cdd"){
+        git 'https://github.com/IntelliqDevops/maven.git'
+    }
+    stage('cm'){
+        sh 'mvn package'
+    }
+    stage('ct'){
+        sh 'scp /var/lib/jenkins/workspace/hh/webapp/target/webapp.war ubuntu@172.31.24.126:/var/lib/tomcat10/webapps/testa.war'
+    }
+}
+
